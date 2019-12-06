@@ -11,8 +11,12 @@ namespace Day_5
 
 
             // Part 1
-            PartOneAnswer(input, 1);
+            // PartOneAnswer(input, 1);
+            // Console.WriteLine("End Part 1.");
 
+            // Part 2
+            PartOneAnswer(input, 5);
+            Console.WriteLine("End Part 2.");
         }
 
         static int[] ProcessInput(string rawInput)
@@ -54,62 +58,325 @@ namespace Day_5
                             Console.WriteLine(input[input[i + 1]]);
                             i += 2;
                             break;
-                        default:
-                            if (input[i] >= 100 & input[i] < 1000)
+                        case 5:
+                            if (input[input[i + 1]] != 0)
                             {
-                                switch (input[i])
-                                {
-                                    case 101:
-                                        input[input[i + 3]] = input[i + 1] + input[input[i + 2]];
-                                        i += 4;
-                                        break;
-                                    case 102:
-                                        input[input[i + 3]] = input[i + 1] * input[input[i + 2]];
-                                        i += 4;
-                                        break;
-                                    // case 103: // none seem to be present
-                                    //     break;
-                                    case 104:
-                                        Console.WriteLine(input[i + 1]);
-                                        i += 2;
-                                        break;
-                                    default:
-                                        break;
-                                }
+                                i = input[input[i + 2]];
+                            }
+                            else
+                            {
+                                i += 3;
+                            }
+                            break;
+                        case 6:
+                            if (input[input[i + 1]] == 0)
+                            {
+                                i = input[input[i + 2]];
+                            }
+                            else
+                            {
+                                i += 3;
+                            }
+                            break;
+                        case 7:
+                            if (input[input[i + 1]] < input[input[i + 2]])
+                            {
+                                input[input[i + 3]] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[input[i + 3]] = 0;
+                                i += 4;
+                            }
+                            break;
+                        case 8:
+                            if (input[input[i + 1]] == input[input[i + 2]])
+                            {
+                                input[input[i + 3]] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[input[i + 3]] = 0;
+                                i += 4;
+                            }
+                            break;
 
-                            }
-                            if (input[i] >= 1000)
+                        case 101:
+                            input[input[i + 3]] = input[i + 1] + input[input[i + 2]];
+                            i += 4;
+                            break;
+                        case 102:
+                            input[input[i + 3]] = input[i + 1] * input[input[i + 2]];
+                            i += 4;
+                            break;
+                        case 103: // none seem to be present
+                            break;
+                        case 104:
+                            Console.WriteLine(input[i + 1]);
+                            i += 2;
+                            break;
+                        case 105:
+                            if (input[i + 1] != 0)
                             {
-                                switch (input[i])
-                                {
-                                    case 1001:
-                                        input[input[i + 3]] = input[input[i + 1]] + input[i + 2];
-                                        i += 4;
-                                        break;
-                                    case 1101:
-                                        input[input[i + 3]] = input[i + 1] + input[i + 2];
-                                        i += 4;
-                                        break;
-                                    case 1002:
-                                        input[input[i + 3]] = input[input[i + 1]] * input[i + 2];
-                                        i += 4;
-                                        break;
-                                    case 1102:
-                                        input[input[i + 3]] = input[i + 1] * input[i + 2];
-                                        i += 4;
-                                        break;
-                                    default:
-                                        break;
-                                }
+                                i = input[input[i + 2]];
                             }
-                            // if (input[i] >= 10000)
-                            // {
-                            //     switch (input[i])
-                            //     {
-                            //         default:
-                            //             break;
-                            //     }
-                            // }
+                            else
+                            {
+                                i += 3;
+                            }
+                            break;
+                        case 106:
+                            if (input[i + 1] == 0)
+                            {
+                                i = input[input[i + 2]];
+                            }
+                            else
+                            {
+                                i += 3;
+                            }
+                            break;
+                        case 107:
+                            if (input[i + 1] < input[input[i + 2]])
+                            {
+                                input[input[i + 3]] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[input[i + 3]] = 0;
+                                i += 4;
+                            }
+                            break;
+                        case 108:
+                            if (input[i + 1] == input[input[i + 2]])
+                            {
+                                input[input[i + 3]] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[input[i + 3]] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 1001:
+                            input[input[i + 3]] = input[input[i + 1]] + input[i + 2];
+                            i += 4;
+                            break;
+                        case 1101:
+                            input[input[i + 3]] = input[i + 1] + input[i + 2];
+                            i += 4;
+                            break;
+                        case 1002:
+                            input[input[i + 3]] = input[input[i + 1]] * input[i + 2];
+                            i += 4;
+                            break;
+                        case 1102:
+                            input[input[i + 3]] = input[i + 1] * input[i + 2];
+                            i += 4;
+                            break;
+
+                        case 1005:
+                            if (input[input[i + 1]] != 0)
+                            {
+                                i = input[i + 2];
+                            }
+                            else
+                            {
+                                i += 3;
+                            }
+                            break;
+                        case 1105:
+                            if (input[i + 1] != 0)
+                            {
+                                i = input[i + 2];
+                            }
+                            else
+                            {
+                                i += 3;
+                            }
+                            break;
+                        case 1006:
+                            if (input[input[i + 1]] == 0)
+                            {
+                                i = input[i + 2];
+                            }
+                            else
+                            {
+                                i += 3;
+                            }
+                            break;
+                        case 1106:
+                            if (input[i + 1] == 0)
+                            {
+                                i = input[i + 2];
+                            }
+                            else
+                            {
+                                i += 3;
+                            }
+                            break;
+
+                        case 1007:
+                            if (input[input[i + 1]] < input[i + 2])
+                            {
+                                input[input[i + 3]] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[input[i + 3]] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 1107:
+                            if (input[i + 1] < input[i + 2])
+                            {
+                                input[input[i + 3]] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[input[i + 3]] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 1008:
+                            if (input[input[i + 1]] == input[i + 2])
+                            {
+                                input[input[i + 3]] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[input[i + 3]] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 1108:
+                            if (input[i + 1] == input[i + 2])
+                            {
+                                input[input[i + 3]] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[input[i + 3]] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 10007:
+                            if (input[input[i + 1]] < input[input[i + 2]])
+                            {
+                                input[i + 3] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[i + 3] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 10107:
+                            if (input[i + 1] < input[input[i + 2]])
+                            {
+                                input[i + 3] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[i + 3] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 11007:
+                            if (input[input[i + 1]] < input[i + 2])
+                            {
+                                input[i + 3] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[i + 3] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 11107:
+                            if (input[i + 1] < input[i + 2])
+                            {
+                                input[i + 3] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[i + 3] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 10008:
+                            if (input[input[i + 1]] == input[input[i + 2]])
+                            {
+                                input[i + 3] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[i + 3] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 10108:
+                            if (input[i + 1] == input[input[i + 2]])
+                            {
+                                input[i + 3] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[i + 3] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 11008:
+                            if (input[input[i + 1]] == input[i + 2])
+                            {
+                                input[i + 3] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[i + 3] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        case 11108:
+                            if (input[i + 1] == input[i + 2])
+                            {
+                                input[i + 3] = 1;
+                                i += 4;
+                            }
+                            else
+                            {
+                                input[i + 3] = 0;
+                                i += 4;
+                            }
+                            break;
+
+                        default:
                             break;
                     }
                 }
