@@ -12,21 +12,20 @@ namespace Day_10
             // Process inputs
             string[] inputLines = File.ReadAllLines("input.txt");
             int[][] inputArray = new int[inputLines.Length][];
-            int asteroidIndex = 1;
+            int asteroidIndex = 0;
             for (int i = 0; i < inputLines.Length; i++)
             {
                 string str = inputLines[i];
                 int[] line = new int[str.Length];
                 for (int j = 0; j < str.Length; j++)
                 {
-                    line[j] = str[j] == '.' ? 0 : asteroidIndex;
-                    if (line[j] == asteroidIndex) asteroidIndex++;
+                    line[j] = str[j] == '.' ? 0 : asteroidIndex + 1;
+                    if (line[j] == asteroidIndex + 1) asteroidIndex++;
                 }
                 inputArray[i] = line;
             }
-            asteroidIndex--;
 
-        
+
             // Part 1 Solution
             // Calculate absolute positions
             int[][] positionArray = new int[asteroidIndex][];
@@ -57,20 +56,20 @@ namespace Day_10
                     int[] thatAsteroid = positionArray[j];
                     int diffX = thatAsteroid[0] - thisAsteroid[0];
                     int diffY = thatAsteroid[1] - thisAsteroid[1];
-                    
+
                     if (diffY == 0) // same row
                     {
                         double ratio = diffX == 0 ? 0 : diffX / Math.Abs(diffX);
-                        if (ratio != 0 ) relativeXY0.Add(ratio);
+                        if (ratio != 0) relativeXY0.Add(ratio);
                     }
                     else if (diffY < 0) // upper subspace
                     {
-                        double ratio = (double) diffX / diffY;
+                        double ratio = (double)diffX / diffY;
                         relativeXY1.Add(ratio);
                     }
                     else if (diffY > 0) // lower subspace
                     {
-                        double ratio = (double) diffX / diffY;
+                        double ratio = (double)diffX / diffY;
                         relativeXY2.Add(ratio);
                     }
                 }
@@ -83,7 +82,41 @@ namespace Day_10
 
 
             // Part 2 Solution
+            int baseAsteroid = Array.IndexOf(detectableArray, result);
+            int[] basePosition = positionArray[baseAsteroid];
+            int[] quadCount = new int[4] { 0, 0, 0, 0 };
+            for (int i = 0; i < positionArray.Length; i++)
+            {
+                int[] thatAsteroid = positionArray[i];
 
+                List<double> relativeXY0 = new List<double>();
+                List<double> relativeXY1 = new List<double>();
+                List<double> relativeXY2 = new List<double>();
+
+                int diffX = thatAsteroid[0] - basePosition[0];
+                int diffY = thatAsteroid[1] - basePosition[1];
+
+                if (diffX >= 0 & diffY >= 0)
+                {
+                    quadCount[0]++;
+                }
+                else if (diffX < 0 & diffY > 0)
+                {
+                    quadCount[1]++;
+                }
+                else if (diffX <= 0 & diffY <= 0)
+                {
+                    quadCount[2]++;
+                }
+                else if (diffX > 0 & diffY < 0)
+                {
+                    quadCount[3]++;
+                }
+                else
+                {
+                    Console.WriteLine("Bananas!");
+                }
+            }
 
         }
 
