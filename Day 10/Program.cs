@@ -85,6 +85,7 @@ namespace Day_10
             int baseAsteroid = Array.IndexOf(detectableArray, result);
             int[] basePosition = positionArray[baseAsteroid];
             int[] quadCount = new int[4] { 0, 0, 0, 0 };
+            List<double> newList = new List<double>();
             for (int i = 0; i < positionArray.Length; i++)
             {
                 int[] thatAsteroid = positionArray[i];
@@ -103,6 +104,8 @@ namespace Day_10
                 else if (diffX < 0 & diffY > 0)
                 {
                     quadCount[1]++;
+                    double ratio = (double)diffX / diffY;
+                    newList.Add(ratio);
                 }
                 else if (diffX <= 0 & diffY <= 0)
                 {
@@ -117,6 +120,8 @@ namespace Day_10
                     Console.WriteLine("Bananas!");
                 }
             }
+
+            newList.Sort();
 
         }
 
